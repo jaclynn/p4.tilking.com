@@ -27,6 +27,8 @@
     <li><a href="/users/login">Login</a></li>
     <li><a href="/users/logout">Logout</a></li>
     <li><a href="/users/updateprofile">Update Profile</a></li>
+    <li><a href="/bricks/index">Show Bricks</a></li>
+    <li><a href="/bricks/add">Add Brick</a></li>
   </ul>
 </div>		
 	<?php if(isset($content)) echo $content; ?>
@@ -34,6 +36,6 @@
 	<?php if(isset($client_files_body)) echo $client_files_body; ?>
 	
 
-<footer>Copyright 2013 Jackie Wilson</footer>
+
 </body>
 </html>

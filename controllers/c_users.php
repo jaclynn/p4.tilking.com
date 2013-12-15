@@ -76,10 +76,10 @@ class users_controller extends base_controller {
 	            DB::instance(DB_NAME)->insert_row('profiles', $newprofile);
 	            # Send them to the login page
 	            
-	            $initialfollowerentry = array('user_id' => $userid,
-	            							  'created' => $_POST['created']);
+	            # $initialfollowerentry = array('user_id' => $userid,
+	            # 							  'created' => $_POST['created']);
 	            							  
-	            DB::instance(DB_NAME)->insert_row('users_users', $initialfollowerentry);
+	            # DB::instance(DB_NAME)->insert_row('users_users', $initialfollowerentry);
 	            							  					   
 				Router::redirect('/users/login');
             }
@@ -125,7 +125,7 @@ class users_controller extends base_controller {
 			    # Login passed
 			    else {
 			        setcookie("token", $token, strtotime('+2 weeks'), '/');
-			        Router::redirect("/");
+			        Router::redirect("/bricks/index");
 			    }           
     }
 

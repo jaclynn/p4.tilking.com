@@ -21,6 +21,8 @@ $(document).ready(function() {
 				cellH: 'auto',
 				onResize: function() {
 					ewall.fitWidth();
+					// added this, seemed to help:
+					ewall.fitHeight();
 				}
 			});
 			
@@ -31,8 +33,10 @@ $(document).ready(function() {
 				-- length;
 				if (!length) {
 					setTimeout(function() {
-						images.css({visibility: 'visible'});
+						images.css({visibility: 'visible'});						
 						ewall.fitWidth();
+						//this made all bricks the height of the tallest:
+						//ewall.fitHeight();
 					}, 505);
 				}
 

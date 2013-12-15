@@ -1,10 +1,22 @@
-<?php foreach($posts as $post): ?>
+<div id="freewall" class="free-wall"> 
+<?php foreach($bricks as $brick): ?>
 
 <div class="brick">
-	<img src="i/photo/1.jpg" width="100%">
+	<img src='<?=$brick['image']?>' width="100%">
 	<div class="info">
-	    <h3>Freewall</h3>
-	    <h5>Pinterest layout</h5>
+	    <h5>By: <?=$brick['first_name']?> <?=$brick['last_name']?></h5>
+	    <h5>Price: $ <?=$brick['price']?></h5>
+	    <h5>Description: <?=$brick['content']?></h5>
+	    <h5>Pickup: <?=$brick['location']?></h5>
+		<h5>Created: <time datetime="<?=Time::display($brick['created'],'Y-m-d G:i')?>">
+        	<?=Time::display($brick['created'])?>
+		</time></h5>
+		<button name="interest">Express Interest</button>
+		<h5>Interested Parties:</h5>
+		<h5>Tom Jones</h5>
+		<h5>David Wilson</h5>
+		<h5>Amy Butler</h5>
+		
     </div>
     <!--
     <h1><?=$post['first_name']?> <?=$post['last_name']?> posted:</h1>
@@ -18,3 +30,4 @@
 </div>
 
 <?php endforeach; ?>
+</div>

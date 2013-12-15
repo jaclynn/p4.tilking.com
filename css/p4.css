@@ -17,9 +17,11 @@
 			}
 			.brick {
 				width: 221.2px;
+				
 			}
 			.info {
 				padding: 15px;
+				margin-bottom: 15px;
 				color: #333;
 			}
 			.brick img {
