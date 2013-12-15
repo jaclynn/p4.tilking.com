@@ -1,0 +1,79 @@
+			body {
+				background: rgba(40, 40, 40, 0.43);
+				font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+				font-size:15px;
+				margin: 15px;
+
+			}
+			h2 {
+				font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+				font-size:24px;
+			}
+			fieldset {
+				margin: 15px;
+			}
+			.free-wall {
+				margin: 15px;
+			}
+			.brick {
+				width: 221.2px;
+			}
+			.info {
+				padding: 15px;
+				color: #333;
+			}
+			.brick img {
+				margin: 0px;
+				padding: 0px;
+				display: block;
+			}
+
+footer {
+	width:100%;
+	color:white;
+	background: black;
+	text-align: center;
+	font-size: small;
+}
+
+/*
+
+body {
+	background: #e8e8e8;
+	font-family: 'Helvetica Neue', Helvetica, Arial;
+	background: rgba(231, 231, 231, 0.43);
+}
+
+.brick {
+	background: white;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+	border-radius: 3px;
+	color: #333;
+	border: none;
+	width: 221.2px;
+	background: rgb(135, 199, 135);
+	padding:5px;
+}
+
+.brick .img {
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+}
+
+.brick h3, .brick h5 {
+	text-shadow: none;
+}
+
+.free-wall {
+  margin: 15px;
+}
+
+.info {
+	padding: 15px;
+	color: #333;
+}
+*/
