@@ -12,6 +12,6 @@
 		<p><label class="field" for="email">Email:</label> <input type='email' id='email' name='email'/></p>
 		<p><label class="field" for="password">Password:</label> <input type='password' id='password' name='password'/></p>
 		
-		<input type='submit' value='Login'/>
+		<input class="myButton" type='submit' value='Login'/>
 	</fieldset>
 </form>

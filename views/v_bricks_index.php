@@ -11,7 +11,11 @@
 		<h5>Created: <time datetime="<?=Time::display($brick['created'],'Y-m-d G:i')?>">
         	<?=Time::display($brick['created'])?>
 		</time></h5>
-		<button name="interest">Express Interest</button>
+		<form method='POST' action='/bricks/p_interest'>
+			<input type="hidden" name="brick_id" value=<?=$brick['brick_id']?>/>
+			<input type="hidden" name="user_id" value=<?=$user->user_id?>/>
+			<input type="submit" class="myButton" id="interestBtn" value="Express Interest"/>
+		</form>
 		<h5>Interested Parties:</h5>
 		<h5>Tom Jones</h5>
 		<h5>David Wilson</h5>

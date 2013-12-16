@@ -1,5 +1,25 @@
 $(document).ready(function() {
-		$('#simple-menu').sidr();
+		
+		
+		$('#simple-menu').sidr({
+			onOpen: function(){
+				$('#simple-menu').html("Hide Menu");
+			},
+			onClose: function(){
+				$('#simple-menu').html("Show Menu");
+			}
+		});
+		
+		$.sidr('open', 'sidr');
+
+		$('#sidr li').bind("click",function() { 
+			alert("clicked");
+			$(this).addClass("active");
+			});
+			
+		$('#interestBtn').bind("click",function(){
+			$(this).parent().append(php_user);
+		});
 		/*
   		var wall = new freewall(".container");
 	        wall.reset({
