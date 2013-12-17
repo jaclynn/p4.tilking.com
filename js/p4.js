@@ -13,12 +13,28 @@ $(document).ready(function() {
 		$.sidr('open', 'sidr');
 
 		$('#sidr li').bind("click",function() { 
-			alert("clicked");
 			$(this).addClass("active");
 			});
-			
-		$('#interestBtn').bind("click",function(){
-			$(this).parent().append(php_user);
+		
+
+
+		$('.interestBtn').bind("click",function(){
+			alert("interest button clicked");
+			//$(this).parent().append(php_user);
+			var current_id = $(this).parent().attr('id');
+			console.log(current_id);
+			$.ajax({ url: '/bricks/p_interest',
+			         data: {user_id: php_user_id, brick_id: $(this).parent().attr('id')},
+			         type: 'post',
+			         success: function(output) {
+			                      current_id = '#'+current_id+' .int_parties';
+			                      int_div = "testing";
+			                      console.log(output);
+			                      $(current_id).html(output);
+			                    
+			                  }
+							  });
+
 		});
 		/*
   		var wall = new freewall(".container");
@@ -32,6 +48,10 @@ $(document).ready(function() {
  
         wall.fitWidth();
         */
+
+		function loadInterest(brick_id) {
+			alert(brick_id);
+		}
         
         	var ewall = new freewall("#freewall");
 			ewall.reset({

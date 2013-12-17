@@ -10,7 +10,9 @@ class users_controller extends base_controller {
     }
 
     public function signup($error = NULL) {
-       
+       	if($this->user) {
+	        Router::redirect('/users/login');
+	    }
        # Set up the view
        $this->template->content = View::instance('v_users_signup');
        $this->template->title = "Sign Up";
