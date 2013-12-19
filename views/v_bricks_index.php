@@ -3,23 +3,35 @@
 
 <div class="brick">
 	<img src='<?=$brick['image']?>' width="100%">
+	<div class="<?=$brick['availability']?>">&nbsp;</div>
 	<div class="info" id=<?=$brick['brick_id']?>>
-	    <h5>By: <?=$brick['first_name']?> <?=$brick['last_name']?></h5>
-	    <h5>Price: $ <?=$brick['price']?></h5>
-	    <h5>Description: <?=$brick['content']?></h5>
-	    <h5>Pickup: <?=$brick['location']?></h5>
-		<h5>Created: <time datetime="<?=Time::display($brick['created'],'Y-m-d G:i')?>">
+	    <p>By: <?=$brick['first_name']?> <?=$brick['last_name']?><br/> 
+	    Price: $ <?=$brick['price']?><br/>
+	    Description:<br/><?=$brick['content']?><br/>
+	    Pickup: <?=$brick['location']?><br/>
+		Created:<br/><time datetime="<?=Time::display($brick['created'],'Y-m-d G:i')?>">
         	<?=Time::display($brick['created'])?>
-		</time></h5>
+		</time><br/></p>
 		<!--<form method='POST' action='/bricks/p_interest'>
 			<input type="hidden" name="brick_id" value=<?=$brick['brick_id']?>/>
 			<input type="hidden" name="user_id" value=<?=$user->user_id?>/>-->
+		<?php if($mybricks): ?>
+		<button class="statusBtn myButton" id="statusA">Available</button>
+		<button class="statusBtn myButton" id="statusP">Pending</button>
+		<button class="statusBtn myButton" id="statusS">Sold</button>
+		<?php else: ?>
 		<button class="interestBtn myButton">Express INTEREST</button>
+		<?php endif; ?>
 		<!--</form>-->
-		<h5>Interested Parties:</h5>
+		
+		<h6>Interested Parties:</h6>
 		<div class="int_parties">
-			<script>console.log(<?=$brick['brick_id']?>);</script>
+		<?php foreach($brick['parties'] as $interest): ?>
+			<?=$interest['fn']?> <?=$interest['ln']?><br/>
+		<?php endforeach; ?>
 		</div>
+		<br/>
+		<br/>
 		
     </div>
 </div>

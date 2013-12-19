@@ -1,8 +1,8 @@
 
-<h1>This is the profile of <?=$user->first_name?></h1>
+<h2>This is the profile of <?=$user->first_name?></h2>
     <?php if(isset($error)): ?>
-        <div class='error'>
-            Invalid File. Try again.
+	<br/>Server Side Error: <div class='error'>
+            <?=$error?>
         </div>
         <br>
     <?php endif; ?>
@@ -30,7 +30,7 @@
         <?=Time::display($currentuser['modified'])?></time></p>
     <p>Enter date of birth as (YYYY-MM-DD) if you don't have datepicker</p>
 	<p><label class="field" for="dob">Date of Birth:</label><input type='date' id='dob' name='dob' value='<?=$currentuser['dob']?>'/></p>
-			<input type='text' id='city' name='city' value='<?=$currentuser['city']?>'/></p>
+		<label class="field" for="city">City:</label><input type='text' id='city' name='city' value='<?=$currentuser['city']?>'/></p>
 	<p><label class="field" for="state">State:</label><select id='state' name="state">
 		<option value="<?=$currentuser['state']?>" selected="selected"><?=$currentuser['state']?></option>
 		<option value="AL">Alabama</option>
@@ -89,4 +89,3 @@
 	</fieldset>
 </form>
 <?php endforeach; ?>
-</div>

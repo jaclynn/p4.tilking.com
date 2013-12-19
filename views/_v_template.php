@@ -11,7 +11,8 @@
 	<link rel="stylesheet" media="screen" rel="stylesheet" href="/css/p4.css" />				
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
-	<script src="/js/jquery.min.js" type="text/javascript"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!-- <script src="/js/jquery.min.js" type="text/javascript"></script> -->
 	<script src="/js/jquery.freewall.js" type="text/javascript"></script>
     <script src="/js/jquery.sidr.min.js"></script>
 
@@ -21,15 +22,23 @@
 <body>
 <a href="#sidr" id="simple-menu" class="myButton">codecanyon</a>
 
- 
 <div id="sidr">
         <ul>
+        	<li><a href="/index/index"><img src="/img/See_LOVE_Get_Truck.png" id="logo" alt="logo"/></a></li>
 		    <li><a href="/users/signup">Signup</a></li>
 		    <li><a href="/users/login">Login</a></li>
 		    <li><a href="/users/logout">Logout</a></li>
-		    <li><a href="/users/updateprofile">Update Profile</a></li>
-		    <li><a href="/bricks/index">Show Bricks</a></li>
+		    <li><a href="/users/updateprofile">My Profile</a></li>
+		    <li><a href="/bricks/index">Show All Bricks</a>
+		    	<ul>
+		    		<li><a href="/bricks/index/AVAILABLE">Show Available</a></li>
+		    		<li><a href="/bricks/index/PPU">Show Pending</a></li>
+		    		<li><a href="/bricks/index/SOLD">Show Sold</a></li>
+		    		<li><a href="/bricks/index/<?=$user->user_id?>">Show My Bricks</a></li>
+		    	</ul>
+		    </li>
 		    <li><a href="/bricks/add">Add Brick</a></li>
+		    <li><a href="/bricks/mybricks">My Bricks</a></li>
         </ul>
 </div>
 

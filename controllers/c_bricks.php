@@ -18,7 +18,7 @@ class bricks_controller extends base_controller {
 	/*-------------------------------------------------------------------------------------------------
 	Accessed via http://localhost/index/index/
 	-------------------------------------------------------------------------------------------------*/
-	public function index() {	
+	public function index($status=NULL) {	
 
 		
 	    # Set up the View
@@ -28,8 +28,25 @@ class bricks_controller extends base_controller {
 			'var php_user = "'.$this->user->first_name.' '.$this->user->last_name.'";'.
 			'var php_user_id = "'.$this->user->user_id.'";'.'</script>';
 	
-	    # Build the query 
-	    # Added DISTINCT so I could add the OR and include the user's own posts. Also sorted by newest
+		$mybricks=FALSE;
+		
+	    if ($status!=NULL){
+	    	switch ($status) {
+		    	case "AVAILABLE":
+		    	case "PPU":
+		    	case "SOLD":
+			    	$whereStatus = 'WHERE bricks.availability = "'.$status.'"';
+			    	break;
+			    default:
+			    	$whereStatus = 'WHERE bricks.user_id = "'.$status.'"';
+			    	$mybricks = TRUE;
+			    	break;
+			} //end switch
+	    } else {
+		    $whereStatus = '';
+	    }
+	    
+	    # Build the query, narrow by parameter, if passed, order by newest
 	    $q = 'SELECT 
 	    			bricks.brick_id,
 		    		bricks.image, 
@@ -38,21 +55,13 @@ class bricks_controller extends base_controller {
 		    		bricks.created, 
 		    		bricks.content,
 		    		bricks.location,
+		    		bricks.availability,
 		    		users.first_name,
 		    		users.last_name
 	    	    FROM bricks
 	    		INNER JOIN users 
-		        ON bricks.user_id = users.user_id 
-		        ORDER BY bricks.created';
-		        
-		$p = 'SELECT 
-					interest.user_id,
-		    		users.first_name as fn,
-		    		users.last_name as ln
-	    	    FROM interest
-	    		INNER JOIN users 
-		        ON interest.user_id = users.user_id
-		        ORDER BY interest.created';
+		        ON bricks.user_id = users.user_id '.$whereStatus.
+		        ' ORDER BY bricks.created';
 		/* $q = 'SELECT DISTINCT
 		            posts.content,
 		            posts.created,
@@ -68,11 +77,27 @@ class bricks_controller extends base_controller {
 		            ON posts.user_id = users.user_id
 		        WHERE users_users.user_id = '.$this->user->user_id.' ORDER BY posts.created DESC'; */
 	    # Run the query
+
 	    $bricks = DB::instance(DB_NAME)->select_rows($q);
-		$int_parties = DB::instance(DB_NAME)->select_rows($p);
-	    # Pass data to the View
+	    
+	    $key = "parties";
+	    for ($i = 0; $i < count($bricks); $i++) {
+	    	$intQ='SELECT 
+					interest.user_id,
+		    		users.first_name as fn,
+		    		users.last_name as ln
+	    	    FROM interest
+	    		INNER JOIN users 
+		        ON interest.user_id = users.user_id 
+		        AND interest.brick_id = "'.$bricks[$i]['brick_id'].'" 
+		        ORDER BY interest.created';
+		    $intEntry = DB::instance(DB_NAME)->select_rows($intQ);
+			$bricks[$i]['parties']=$intEntry;
+		}
+	    	
+	    	    # Pass data to the View
 	    $this->template->content->bricks = $bricks;
-	    $this->template->content->int_parties = $int_parties;
+	    $this->template->content->mybricks = $mybricks;
 	    $this->template->title = "Bricks";
 	
 	    # Render the View
@@ -80,7 +105,10 @@ class bricks_controller extends base_controller {
 		}
 		
 	public function add($error=NULL) {
-
+		
+		if ($error=="FILE_BAD"){
+			$error = "Invalid file type for brick picture.";
+		}
         # Setup view
         $this->template->content = View::instance('v_bricks_add');
 		$this->template->content->error = $error;
@@ -92,9 +120,7 @@ class bricks_controller extends base_controller {
         echo $this->template;
 
     }
-    public function p_showInterest(brick_id) {
-	    // find a way to populate the .int_parties div here?
-    }
+
 	public function p_interest() {
 		// make a record linking brick to interested user
 		$_POST['created'] = Time::now();
@@ -121,8 +147,69 @@ class bricks_controller extends base_controller {
 		//Router::redirect("/bricks/index");
 	}
 
-    public function p_add() {
+	public function mybricks() {
+		# If user is blank, they're not logged in; redirect them to the login page
+		if(!$this->user) {
+	        Router::redirect('/users/login');
+	    }
 		
+		
+		$b = 'SELECT 
+			bricks.brick_id,
+    		bricks.image, 
+    		bricks.price, 
+    		bricks.user_id as bricks_user_id, 
+    		bricks.created, 
+    		bricks.content,
+    		bricks.location,
+    		users.first_name,
+    		users.last_name
+	    FROM bricks
+		INNER JOIN users 
+        ON bricks.user_id = users.user_id 
+        WHERE bricks.user_id = '.$this->user->user_id.'
+        ORDER BY bricks.created';	
+		
+		$bricks = DB::instance(DB_NAME)->select_rows($b);
+
+	    $key = "parties";
+	    for ($i = 0; $i < count($bricks); $i++) {
+	    	$intQ='SELECT 
+					interest.user_id,
+		    		users.first_name as fn,
+		    		users.last_name as ln
+	    	    FROM interest
+	    		INNER JOIN users 
+		        ON interest.user_id = users.user_id 
+		        AND interest.brick_id = "'.$bricks[$i]['brick_id'].'" 
+		        ORDER BY interest.created';
+		    $intEntry = DB::instance(DB_NAME)->select_rows($intQ);
+			$bricks[$i]['parties']=$intEntry;
+		}
+
+		$this->template->content = View::instance('v_bricks_mybricks');
+		$this->template->content->bricks = $bricks;
+
+        $this->template->title   = "My Bricks";
+		
+        # Render template
+        echo $this->template;
+
+	}
+	public function p_updatebrickstatus() {
+		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
+						
+        $_POST['modified'] = Time::now();
+        // switch case for statusA, statusP, statusS            
+        DB::instance(DB_NAME)->update("bricks", $_POST['available'], "WHERE brick_id = '".$this->user->user_id."'");
+		//Router::redirect("/bricks/index/".$this->user->id);
+		
+		//echo the new available field?
+
+	}
+
+    public function p_add() {
+		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
         # Associate this post with this user
         $_POST['user_id']  = $this->user->user_id;
         
@@ -181,7 +268,7 @@ class bricks_controller extends base_controller {
 		  } //big if
 		else
 		  {
-		  Router::redirect("/bricks/add/error");
+		  Router::redirect("/bricks/add/FILE_BAD");
 		  }
 	  //$data = Array("image" => $path.$extension);
 	  $_POST['image']  = '/'.$path.$extension;

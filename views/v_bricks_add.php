@@ -1,26 +1,28 @@
     <?php if(isset($error)): ?>
-    <br/>
-        <div class='error'>
-            Invalid File. Try again.<br/>
-            
+	<br/>Server Side Error: <div class='error'>
+            <?=$error?>
         </div>
         <br>
     <?php endif; ?>
-
 
 <br/>
 <br/>
 <form method='POST' action='/bricks/p_add' enctype="multipart/form-data">
 	<label for='brickpic'>Picture:</label><br/>
-	<input type="file" name="brickpic" id="file" class="myButton"><br>
+	<input type="file" name="brickpic" id="file" class="myButton">
+	<br/>
+	<br/>
 	<label for='price'>Price:</label><br/>
-	<input type="number" name='price' /><br/>
-<!--	<label for='image'>Image Location:</label><br/>
-	<input type="text" name='image' /><br/> -->
+	<input type="number" name='price' />
+	<div></div>
+	<br/>
 	<label for='location'>Location:</label><br/>
-	<input type="text" name='location' /><br/>
-    <label for='content'>New Brick:</label><br/>
-    <textarea name='content' name='content' maxlength="512"></textarea>
+	<input type="text" id='location' name='location' maxlength="20"/>
+	<div></div>
+	<br/>
+    <label for='description'>Description:</label><br/>
+    <textarea name='description' id="description" maxlength="128"></textarea>
+    <div id='maxcharerr'></div>
     <br/><br/>
     <input class="myButton" type='submit' value='New Brick' />
 
