@@ -10,7 +10,7 @@ class bricks_controller extends base_controller {
 		
         # Make sure user is logged in if they want to use anything in this controller
         if(!$this->user) {
-            die("Members only. <a href='/users/login'>Login</a>");
+            Router::redirect('/users/login');
         }
 		
 	} 

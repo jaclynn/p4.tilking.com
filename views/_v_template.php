@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/css/jquery.sidr.dark.css">
 	<link rel="stylesheet" media="screen" href="/css/freewall.css" />
 	<link rel="stylesheet" type="text/css" href="/css/pinterest-style.css" />
-	<link rel="stylesheet" media="screen" rel="stylesheet" href="/css/p4.css" />				
+	<link rel="stylesheet" media="screen" href="/css/p4.css" />				
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
