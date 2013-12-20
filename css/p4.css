@@ -23,16 +23,16 @@ body {
 	background-color: #CC0000;
 }
 .brick .AVAILABLE {
-	width:100%;
+	width:221.2px;
 	background-color:#006600;
 }
 .brick .PPU {
-	width:100%;
+	width:221.2px;
 	background-color: #FFCC00;
 }
 
 .brick .SOLD {
-	width:100%;
+	width:221.2px;
 	background-color: #CC0000;
 }
 h2 {
