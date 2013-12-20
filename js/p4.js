@@ -1,5 +1,4 @@
-$(document).ready(function() {
-		
+$(document).ready(function() {	
 
 	function noNegsNaN() {
 			var value = $(this).val();
@@ -60,8 +59,6 @@ $(document).ready(function() {
 		$('#sidr li').bind("click",function() { 
 			$(this).addClass("active");
 			});
-		
-
 
 		$('.statusBtn').bind("click",function(){
 			//$(this).parent().append(php_user);
@@ -73,7 +70,6 @@ $(document).ready(function() {
 			         success: function(output) {
 			                      new_class = output;
 			                      console.log(new_class);
-			                      //$(this).parent().prev().removeClass('AVAILABLE','PPU','SOLD').addClass(output);
 			                      console.log($(this).parent().attr('class'));
 			                      $(current_id).attr('class',output);
 			                  }
@@ -84,7 +80,6 @@ $(document).ready(function() {
 		$('.interestBtn').bind("click",function(){
 			//$(this).parent().append(php_user);
 			var current_id = $(this).parent().attr('id');
-			console.log(current_id);
 			$.ajax({ url: '/bricks/p_interest',
 			         data: {user_id: php_user_id, brick_id: $(this).parent().attr('id')},
 			         type: 'post',
@@ -97,19 +92,6 @@ $(document).ready(function() {
 							  });
 
 		});
-
-		/*
-  		var wall = new freewall(".container");
-	        wall.reset({
-            selector: '.border',
-            animate: true,
-            onResize: function() {
-                this.fitWidth();
-            }
-        });
- 
-        wall.fitWidth();
-        */
 
 		function loadInterest(brick_id) {
 			alert(brick_id);
