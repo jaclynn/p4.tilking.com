@@ -9,20 +9,20 @@
 	
 	<?php foreach($profile as $currentuser): ?>
 	<img src='<?=$currentuser['avatar']?>' alt="profile picture" /><br/>
-	<div class="contentside">
-	<form action="/users/p_setavatar" method="post" enctype="multipart/form-data">
-	<fieldset>
-		<legend>Change Profile Picture</legend>
-		<input type="file" name="avatar" id="file"><br>
-		<input type="submit" name="submit" value="Change Profile Picture">
-	</fieldset>
-	</form>
+	<div class="avatararea">
+		<form action="/users/p_setavatar" method="post" enctype="multipart/form-data">
+		<fieldset>
+			<legend>Change Profile Picture</legend>
+			<input type="file" name="avatar" id="file"><br>
+			<input type="submit" name="submit" value="Change Profile Picture">
+		</fieldset>
+		</form>
 	</div>
 	<?=$user->first_name?>&#160;<?=$user->last_name?><br/>
 	Email: <a href="mailto:<?=$user->email?>"><?=$user->email?></a>
 	<br/><br/>
 		
-	<div>
+	
 	<form method='POST' action='/users/p_updateprofile'>
 	<fieldset>
 	<legend>Profile Data:</legend>
@@ -30,7 +30,8 @@
         <?=Time::display($currentuser['modified'])?></time></p>
     <p>Enter date of birth as (YYYY-MM-DD) if you don't have datepicker</p>
 	<p><label class="field" for="dob">Date of Birth:</label><input type='date' id='dob' name='dob' value='<?=$currentuser['dob']?>'/></p>
-		<label class="field" for="city">City:</label><input type='text' id='city' name='city' value='<?=$currentuser['city']?>'/></p>
+	<p>
+		<label class="field" for="city">City:</label><input type='text' id='city' name='city' value='<?=$currentuser['city']?>'/>	</p>
 	<p><label class="field" for="state">State:</label><select id='state' name="state">
 		<option value="<?=$currentuser['state']?>" selected="selected"><?=$currentuser['state']?></option>
 		<option value="AL">Alabama</option>
