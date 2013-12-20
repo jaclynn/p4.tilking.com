@@ -7,6 +7,9 @@ body {
 .error {
 	color:#FF0000;
 }
+.brickimage {
+	width:100%;
+}
 #AVAILABLE {
 	width:200px;
 	text-align: center;

@@ -9,7 +9,7 @@
 <?php foreach($bricks as $brick): ?>
 
 <div class="brick">
-	<img src='<?=$brick['image']?>' width="100%">
+	<img class="brickimage" src='<?=$brick['image']?>' alt="img<?=$brick['brick_id']?>">
 	<div class="<?=$brick['availability']?>" id="status<?=$brick['brick_id']?>">&nbsp;</div>
 	<div class="info" id=<?=$brick['brick_id']?>>
 	    By: <?=$brick['first_name']?> <?=$brick['last_name']?><br/> 
