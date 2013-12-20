@@ -1,4 +1,10 @@
-<div id="freewall" class="free-wall"> 
+
+<div class="colorguide">
+<div class="AVAILABLE">Available Items</div>
+<div class="PPU">Pending Items</div>
+<div class="SOLD">Sold Items</div>
+<div id="freewall" class="free-wall">
+</div>
 <?php foreach($bricks as $brick): ?>
 
 <div class="brick">

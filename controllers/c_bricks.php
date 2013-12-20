@@ -15,9 +15,6 @@ class bricks_controller extends base_controller {
 		
 	} 
 		
-	/*-------------------------------------------------------------------------------------------------
-	Accessed via http://localhost/index/index/
-	-------------------------------------------------------------------------------------------------*/
 	public function index($status=NULL) {	
 
 		
@@ -62,21 +59,6 @@ class bricks_controller extends base_controller {
 	    		INNER JOIN users 
 		        ON bricks.user_id = users.user_id '.$whereStatus.
 		        ' ORDER BY bricks.created';
-		/* $q = 'SELECT DISTINCT
-		            posts.content,
-		            posts.created,
-		            posts.user_id AS post_user_id,
-		            users_users.user_id AS follower_id,
-		            users.first_name,
-		            users.last_name
-		        FROM posts
-		        INNER JOIN users_users 
-		            ON posts.user_id = users_users.user_id_followed		
-		            OR posts.user_id = users_users.user_id            
-		        INNER JOIN users 
-		            ON posts.user_id = users.user_id
-		        WHERE users_users.user_id = '.$this->user->user_id.' ORDER BY posts.created DESC'; */
-	    # Run the query
 
 	    $bricks = DB::instance(DB_NAME)->select_rows($q);
 	    
@@ -147,55 +129,6 @@ class bricks_controller extends base_controller {
 		//Router::redirect("/bricks/index");
 	}
 
-	public function mybricks() {
-		# If user is blank, they're not logged in; redirect them to the login page
-		if(!$this->user) {
-	        Router::redirect('/users/login');
-	    }
-		
-		
-		$b = 'SELECT 
-			bricks.brick_id,
-    		bricks.image, 
-    		bricks.price, 
-    		bricks.user_id as bricks_user_id, 
-    		bricks.created, 
-    		bricks.content,
-    		bricks.location,
-    		users.first_name,
-    		users.last_name
-	    FROM bricks
-		INNER JOIN users 
-        ON bricks.user_id = users.user_id 
-        WHERE bricks.user_id = '.$this->user->user_id.'
-        ORDER BY bricks.created';	
-		
-		$bricks = DB::instance(DB_NAME)->select_rows($b);
-
-	    $key = "parties";
-	    for ($i = 0; $i < count($bricks); $i++) {
-	    	$intQ='SELECT 
-					interest.user_id,
-		    		users.first_name as fn,
-		    		users.last_name as ln
-	    	    FROM interest
-	    		INNER JOIN users 
-		        ON interest.user_id = users.user_id 
-		        AND interest.brick_id = "'.$bricks[$i]['brick_id'].'" 
-		        ORDER BY interest.created';
-		    $intEntry = DB::instance(DB_NAME)->select_rows($intQ);
-			$bricks[$i]['parties']=$intEntry;
-		}
-
-		$this->template->content = View::instance('v_bricks_mybricks');
-		$this->template->content->bricks = $bricks;
-
-        $this->template->title   = "My Bricks";
-		
-        # Render template
-        echo $this->template;
-
-	}
 	public function p_updatebrickstatus() {
 		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
 						

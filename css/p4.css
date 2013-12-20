@@ -7,16 +7,31 @@ body {
 .error {
 	color:#FF0000;
 }
-.AVAILABLE {
+.colorguide .AVAILABLE {
+	width:200px;
+	text-align: center;
+	background-color:#006600;
+}
+.colorguide .PPU {
+	width:200px;
+	text-align: center;
+	background-color: #FFCC00;
+}
+.colorguide .SOLD {
+	width:200px;
+	text-align: center;
+	background-color: #CC0000;
+}
+.brick .AVAILABLE {
 	width:100%;
 	background-color:#006600;
 }
-.PPU {
+.brick .PPU {
 	width:100%;
 	background-color: #FFCC00;
 }
 
-.SOLD {
+.brick .SOLD {
 	width:100%;
 	background-color: #CC0000;
 }
