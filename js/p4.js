@@ -1,10 +1,13 @@
 $(document).ready(function() {
 		
 
-	function noNegs() {
+	function noNegsNaN() {
 			var value = $(this).val();
-			if (value<0) {
-				$(this).next().html("No negative numbers")
+			if (isNaN(value)) {
+				$(this).next().html("Entry must be a number");
+			}
+			else if (value<0) {
+				$(this).next().html("No negative numbers");
 			} else {
 				$(this).next().html("");
 			}
@@ -34,8 +37,8 @@ $(document).ready(function() {
 		
 		
 		$('input[name=location]').on("keyup", maxChars);
-		$('input[name=price]').on("keyup", noNegs);
-		$('input[name=price]').on("change", noNegs);
+		$('input[name=price]').on("keyup", noNegsNaN);
+		$('input[name=price]').on("change", noNegsNaN);
 		$('input[name=price]').on("blur", formatCurrency);
 		
 		// Description text area on v_bricks_add
@@ -82,7 +85,7 @@ $(document).ready(function() {
 			//$(this).parent().append(php_user);
 			var current_id = $(this).parent().attr('id');
 			console.log(current_id);
-			$.ajax({ url: 'bricks/p_interest',
+			$.ajax({ url: '/bricks/p_interest',
 			         data: {user_id: php_user_id, brick_id: $(this).parent().attr('id')},
 			         type: 'post',
 			         success: function(output) {

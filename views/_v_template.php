@@ -38,7 +38,6 @@
 		    	</ul>
 		    </li>
 		    <li><a href="/bricks/add">Add Brick</a></li>
-		    <li><a href="/bricks/mybricks">My Bricks</a></li>
         </ul>
 </div>
 
