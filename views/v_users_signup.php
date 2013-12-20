@@ -13,7 +13,7 @@
 		<p><label class="field" for="last_name">Last  Name:</label><input type='text' id='last_name' name='last_name' required /></p>
 		<p><label class="field" for="email">Email:</label><input type='email' id='email' name='email' required /></p>
 		<br/>
-		<p>Password must be 8+ chars, include a number and symbol: 
+		<p>Password must be 8-20 chars, include a number, a symbol, mixed case: 
 		<p><label class="field" for="password">Password:</label><input type='password' id='password' name='password' minlength="8" maxlength="20" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required/></p>
 		<p><label class="field" for="pass2">Confirm Password:</label><input type='password' id='pass2' name='pass2' minlength="8" maxlength="20" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required/></p>
 				

@@ -3,7 +3,6 @@ body {
 	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
 	font-size:24px;
 	margin: 15px;
-
 }
 .error {
 	color:#FF0000;
@@ -52,7 +51,9 @@ label {
 	padding: 0px;
 	display: block;
 }
-
+p {
+	width:80%;
+}
 footer {
 	width:100%;
 	color:white;
