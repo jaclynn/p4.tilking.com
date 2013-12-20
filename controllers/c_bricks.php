@@ -200,11 +200,24 @@ class bricks_controller extends base_controller {
 		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
 						
         $_POST['modified'] = Time::now();
-        // switch case for statusA, statusP, statusS            
-        DB::instance(DB_NAME)->update("bricks", $_POST['available'], "WHERE brick_id = '".$this->user->user_id."'");
+        
+        switch ($_POST['availability']) {
+	    	case "statusA":
+	    		$_POST['availability'] = "AVAILABLE";
+	    		break;
+	    	case "statusP":
+	    		$_POST['availability'] = "PPU";
+	    		break;
+	    	case "statusS":
+	    		$_POST['availability'] = "SOLD";
+	    		break;
+
+		} //end switch
+        DB::instance(DB_NAME)->update("bricks", $_POST, "WHERE brick_id = '".$_POST['brick_id']."'");
 		//Router::redirect("/bricks/index/".$this->user->id);
 		
 		//echo the new available field?
+		echo $_POST['availability'];
 
 	}
 

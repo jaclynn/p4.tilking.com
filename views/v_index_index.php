@@ -1,7 +1,7 @@
 <br/>
 <br/>
 <br/>
-<h1>See, Love, Get!</h1>
+<h1>See, LUV, Get!</h1>
 <h6>The place to do all three.</h6>
 <br/>
 <br/>

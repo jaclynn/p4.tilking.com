@@ -41,7 +41,7 @@ $(document).ready(function() {
 		// Description text area on v_bricks_add
 		$('#description').on("keyup", maxChars);
 
-		$('#logo').sidr('open','sidr');
+		//$('#logo').sidr('open','sidr');
 		
 		$('#simple-menu').sidr({
 			onOpen: function(){
@@ -60,34 +60,33 @@ $(document).ready(function() {
 		
 
 
-		$('.interestBtn').bind("click",function(){
+		$('.statusBtn').bind("click",function(){
 			//$(this).parent().append(php_user);
-			var current_id = $(this).parent().attr('id');
+			var current_id = "#status"+$(this).parent().attr('id');
 			console.log(current_id);
-			$.ajax({ url: '/bricks/p_interest',
-			         data: {user_id: php_user_id, brick_id: $(this).parent().attr('id')},
+			$.ajax({ url: '/bricks/p_updatebrickstatus',
+			         data: {availability: $(this).attr('id'), brick_id: $(this).parent().attr('id')},
 			         type: 'post',
 			         success: function(output) {
-			                      current_id = '#'+current_id+' .int_parties';
-			                      int_div = "testing";
-			                      console.log(output);
-			                      $(current_id).html(output);
-			                    
+			                      new_class = output;
+			                      console.log(new_class);
+			                      //$(this).parent().prev().removeClass('AVAILABLE','PPU','SOLD').addClass(output);
+			                      console.log($(this).parent().attr('class'));
+			                      $(current_id).attr('class',output);
 			                  }
 							  });
 
 		});
 
-		$('.availableBtn').bind("click",function(){
+		$('.interestBtn').bind("click",function(){
 			//$(this).parent().append(php_user);
 			var current_id = $(this).parent().attr('id');
 			console.log(current_id);
-			$.ajax({ url: '/bricks/p_interest',
+			$.ajax({ url: 'bricks/p_interest',
 			         data: {user_id: php_user_id, brick_id: $(this).parent().attr('id')},
 			         type: 'post',
 			         success: function(output) {
 			                      current_id = '#'+current_id+' .int_parties';
-			                      int_div = "testing";
 			                      console.log(output);
 			                      $(current_id).html(output);
 			                    

@@ -24,7 +24,7 @@
 
 <div id="sidr">
         <ul>
-        	<li><a href="/index/index"><img src="/img/See_LOVE_Get_Truck.png" id="logo" alt="logo"/></a></li>
+        	<li><a href="/index/index"><img src="/img/See-LUV-Get_truck.png" id="logo" alt="logo"/></a></li>
 		    <li><a href="/users/signup">Signup</a></li>
 		    <li><a href="/users/login">Login</a></li>
 		    <li><a href="/users/logout">Logout</a></li>
