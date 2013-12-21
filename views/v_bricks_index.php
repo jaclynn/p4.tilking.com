@@ -65,7 +65,6 @@ var length = images.length;
 images.css({visibility: 'hidden'});
 images.find('img').load(function() {
 	-- length;
-	console.log(length);
 	if (!length) {
 		setTimeout(function() {
 			images.css({visibility: 'visible'});						
