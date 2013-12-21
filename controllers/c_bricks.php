@@ -21,9 +21,9 @@ class bricks_controller extends base_controller {
 	    # Set up the View
 	    $this->template->content = View::instance('v_bricks_index');
 	    $this->template->title   = "Posts";
-	    //$this->template->client_files_head = '<script type="text/javascript">'.
-		//	'var php_user = "'.$this->user->first_name.' '.$this->user->last_name.'";'.
-		//	'var php_user_id = "'.$this->user->user_id.'";'.'</script>';
+	    $this->template->client_files_body = '<script type="text/javascript">'.
+			'var php_user = "'.$this->user->first_name.' '.$this->user->last_name.'";'.
+			'var php_user_id = "'.$this->user->user_id.'";'.'</script>';
 	
 		$mybricks=FALSE;
 		
@@ -106,7 +106,7 @@ class bricks_controller extends base_controller {
 	public function p_interest() {
 		// make a record linking brick to interested user
 		$_POST['created'] = Time::now();
-		$test = 'SELECT user_id FROM interest WHERE brick_id="'.$_POST['brick_id'].'" AND user_id = "'.$_POST['user_id'].'"';
+		$test = 'SELECT user_id FROM interest WHERE brick_id="'.$_POST['brick_id'].'" AND user_id = "'.$this->user->user_id.'"';
 		$user_interest = DB::instance(DB_NAME)->select_field($test);
 		
 		if ($user_interest==NULL) {

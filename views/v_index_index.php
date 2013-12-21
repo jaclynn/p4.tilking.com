@@ -1,6 +1,5 @@
 <br/>
-<br/>
-<br/>
+
 <h1>See * LUV * Get!</h1>
 <h6>The place to do all three.</h6>
 <br/>
@@ -13,7 +12,7 @@ You're new here! Please <a href="/users/signup">sign up</a> so you can start sho
 
 Welcome Back <?=$user->first_name?>!
 <br/>
-<br/>
+
 <?php endif ?>
 <p>
 See*LUV*Get is a site designed to offer services similar to local "yard sale" sites on Facebook. Similar to Craigslist, there is no money exchanged online, but unlike Craigslist, the community knows identities of others who are interested in the items.
@@ -35,4 +34,6 @@ It should be obvious from the site that I am not very good with CSS, and I do re
 * jQuery plugin - <a href="http://vnjs.net/www/project/freewall/">Freewall</a><br/>
 * jQuery plugin - <a href="http://www.berriart.com/sidr/">Sidr Slider Menu</a><br/>
 * Javascript by me all contained in js/p4.js. Modified Sidr to default open, used JS to validate form entry, created the "interested" names in the bricks.<br/>
+* User can upload avatars and item photos
+
 </p>

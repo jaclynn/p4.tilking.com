@@ -19,38 +19,6 @@ $(document).ready(function() {
 		$(this).addClass("active");
 		});
 
-
-	// necessary for freewall initiation    
-    	var ewall = new freewall("#freewall");
-		ewall.reset({
-			selector: '.brick',
-			animate: true,
-			cellW: 200,
-			cellH: 'auto',
-			onResize: function() {
-				ewall.fitWidth();
-			}
-		});
-
-		
-		var images = ewall.container.find('.brick');
-		var length = images.length;
-		images.css({visibility: 'hidden'});
-		images.find('img').load(function() {
-			-- length;
-			console.log(length);
-			if (!length) {
-				setTimeout(function() {
-					images.css({visibility: 'visible'});						
-					ewall.fitWidth();
-				}, 505);
-			}
-
-		});
-
-
-
-
 	// For entering prices: no negatives or non-numbers
 	function noNegsNaN() {
 			var value = $(this).val();
