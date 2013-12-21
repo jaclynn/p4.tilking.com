@@ -21,9 +21,9 @@ class bricks_controller extends base_controller {
 	    # Set up the View
 	    $this->template->content = View::instance('v_bricks_index');
 	    $this->template->title   = "Posts";
-	    $this->template->client_files_head = '<script type="text/javascript">'.
-			'var php_user = "'.$this->user->first_name.' '.$this->user->last_name.'";'.
-			'var php_user_id = "'.$this->user->user_id.'";'.'</script>';
+	    //$this->template->client_files_head = '<script type="text/javascript">'.
+		//	'var php_user = "'.$this->user->first_name.' '.$this->user->last_name.'";'.
+		//	'var php_user_id = "'.$this->user->user_id.'";'.'</script>';
 	
 		$mybricks=FALSE;
 		

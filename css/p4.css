@@ -10,20 +10,30 @@ body {
 .brickimage {
 	width:100%;
 }
+#ALL {
+	width:200px;
+	text-align: center;
+	background-color:#000066;
+	display:inline-block;
+}
+ 
 #AVAILABLE {
 	width:200px;
 	text-align: center;
 	background-color:#006600;
+	display:inline-block;
 }
 #PPU {
 	width:200px;
 	text-align: center;
 	background-color: #FFCC00;
+	display:inline-block;
 }
 #SOLD {
 	width:200px;
 	text-align: center;
 	background-color: #CC0000;
+	display:inline-block;
 }
 .AVAILABLE {
 	width:100%;
@@ -38,6 +48,7 @@ body {
 	width:100%;
 	background-color: #CC0000;
 }
+
 h2 {
 	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
 	font-size:24px;
@@ -87,6 +98,7 @@ footer {
         display: block;
     }
 }
+
 li #logo {
 	display:block;
 	margin-left: auto;
@@ -119,6 +131,7 @@ li #logo {
 	padding:3px 23px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
+	margin-bottom: 10px;
 }
 .myButton:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #415989), color-stop(1, #2e466e));
@@ -134,44 +147,4 @@ li #logo {
 	position:relative;
 	top:1px;
 }
-/*
 
-body {
-	background: #e8e8e8;
-	font-family: 'Helvetica Neue', Helvetica, Arial;
-	background: rgba(231, 231, 231, 0.43);
-}
-
-.brick {
-	background: white;
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-	border-radius: 3px;
-	color: #333;
-	border: none;
-	width: 221.2px;
-	background: rgb(135, 199, 135);
-	padding:5px;
-}
-
-.brick .img {
-	width: 100%;
-	max-width: 100%;
-	display: block;
-	margin: 0px;
-	padding: 0px;
-	display: block;
-}
-
-.brick h3, .brick h5 {
-	text-shadow: none;
-}
-
-.free-wall {
-  margin: 15px;
-}
-
-.info {
-	padding: 15px;
-	color: #333;
-}
-*/

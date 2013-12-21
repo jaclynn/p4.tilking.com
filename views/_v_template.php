@@ -15,14 +15,13 @@
 	<script src="/js/jquery.freewall.js" type="text/javascript"></script>
 	
 		
-	<script src="/js/p4.js" type="text/javascript"></script>				
-	<!-- Controller Specific JS/CSS -->
-	<?php if(isset($client_files_head)) echo $client_files_head; ?>
+	<script src="/js/p4.js" type="text/javascript"></script>					<?php if(isset($client_files_head)) echo $client_files_head; ?>
+	
 
 </head>
 
 <body>
-<a id="simple-menu" href="#sidr" class="myButton">codecanyon</a>
+<a id="simple-menu" href="#sidr" class="myButton">codecanyon</a><br/>
 
 <div id="sidr">
         <ul>

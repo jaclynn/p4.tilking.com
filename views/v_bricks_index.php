@@ -1,8 +1,9 @@
-
-		<div class="colorguide" id="AVAILABLE">Available Items</div>
-		<div class="colorguide" id="PPU">Pending Items</div>
-		<div class="colorguide" id="SOLD">Sold Items</div>
-
+<div id="colorguide">
+		<div id="ALL"><a href="/bricks/index">All Items</a></div>
+		<div id="AVAILABLE"><a href="/bricks/index/AVAILABLE">Available Items</a></div>
+		<div id="PPU"><a href="/bricks/index/PPU">Pending Items</a></div>
+		<div id="SOLD"><a href="/bricks/index/SOLD">Sold Items</a></div>
+</div>
 
 <div id="freewall" class="free-wall">
 
@@ -38,6 +39,38 @@
 			<br/>
 		</div>
 	</div>
-	
 	<?php endforeach; ?>
+
 </div>
+<!-- putting all the JS down here works fine on real browsers, but
+IE ver# would not work unless this script below was explicitly in
+script tags, at explicitly this location, necessitating my widget
+js in the head -->
+<script type="text/javascript">
+var ewall = new freewall("#freewall");
+ewall.reset({
+	selector: '.brick',
+	animate: true,
+	cellW: 200,
+	cellH: 'auto',
+	onResize: function() {
+		ewall.fitWidth();
+	}
+});
+
+
+var images = ewall.container.find('.brick');
+var length = images.length;
+images.css({visibility: 'hidden'});
+images.find('img').load(function() {
+	-- length;
+	console.log(length);
+	if (!length) {
+		setTimeout(function() {
+			images.css({visibility: 'visible'});						
+			ewall.fitWidth();
+		}, 505);
+	}
+
+});
+</script>
