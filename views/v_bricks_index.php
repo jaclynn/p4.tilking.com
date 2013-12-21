@@ -1,8 +1,10 @@
-
-
-<div class="colorguide" id="AVAILABLE">Available Items</div>
-<div class="colorguide" id="PPU">Pending Items</div>
-<div class="colorguide" id="SOLD">Sold Items</div>
+	<div class="clearfix">
+		<div class="float-left">
+			<div class="colorguide" id="AVAILABLE">Available Items</div>
+			<div class="colorguide" id="PPU">Pending Items</div>
+			<div class="colorguide" id="SOLD">Sold Items</div>
+		</div>
+	</div>
 
 <div id="freewall" class="free-wall">
 
@@ -33,11 +35,11 @@
 			<?php foreach($brick['parties'] as $interest): ?>
 				<?=$interest['fn']?> <?=$interest['ln']?><br/>
 			<?php endforeach; ?>
-			</div>
-			<br/>
-			<br/>
 		</div>
+		<br/>
+		<br/>
 	</div>
+</div>
 
 <?php endforeach; ?>
 </div>

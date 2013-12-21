@@ -175,7 +175,6 @@ class bricks_controller extends base_controller {
 		$extension = end($temp);
 		
 		if ((($_FILES["brickpic"]["type"] == "image/gif")
-		|| ($_FILES["brickpic"]["type"] == "image/jpeg")
 		|| ($_FILES["brickpic"]["type"] == "image/jpg")
 		|| ($_FILES["brickpic"]["type"] == "image/jpeg")
 		|| ($_FILES["brickpic"]["type"] == "image/x-png")
@@ -189,11 +188,12 @@ class bricks_controller extends base_controller {
 		    }
 		  else
 		    {
+		      $extension = strtolower($extension);
 		      $path = 'uploads/items/brickpic_user'.$this->user->user_id.'_'.$_POST['created'].'.';
 		      copy($_FILES["brickpic"]["tmp_name"],
 		      $path.$extension);
 		      //echo "Stored in: " . APP_PATH.'uploads/items/'. $_FILES["avatar"]["name"];
-		      $extension = strtolower($extension);
+		      
 		      switch ($extension) {
 				    case 'png':
 				    case 'PNG':
